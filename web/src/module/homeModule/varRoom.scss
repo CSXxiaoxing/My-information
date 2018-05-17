@@ -1,0 +1,826 @@
+@import '../../utils/baseVar.scss'; // card  dd_radio
+
+.varR_modal{
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: #000;
+}
+
+// 消除浮动
+.clear{
+    clear: both;
+}
+
+
+@mixin XX_CJFK{
+    position: absolute;
+    background: $login008 no-repeat;
+    right: 0rem;
+    top: 0rem;
+    background-size: 0.907407rem 0.972222rem;
+    height: 0.972222rem;
+    width: 0.907407rem;
+    overflow: hidden;
+}
+
+.Cvar::-webkit-scrollbar {
+        display: none;
+    } 
+.card::-webkit-scrollbar {
+        display: none;
+    } 
+.set::-webkit-scrollbar {
+        display: none;
+    } 
+// 创建房间
+.Cvar{
+    display: flex;
+    flex-direction: column;
+    width: 8.333333rem;
+    height: 11rem;
+    overflow-y:auto;
+    background: $oxCrowd_011 no-repeat;
+    background-size: 8.333333rem 11rem;
+    &>i{
+        @include XX_CJFK;
+    }
+    button{
+      -webkit-tap-highlight-color: #000000;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-tap-highlight-color: transparent; 
+    }
+    img{
+        height: 0.574074rem;
+        width : 0.592593rem;
+    }
+
+
+    @include border-radius(0.240741rem);
+    border-top-right-radius: 0.38rem;
+    padding: 0 0.703704rem 0.185185rem 0.703704rem;
+    @include box-sizing();
+    // overflow-y: auto;
+    // overflow-x: hidden;
+    position: absolute;
+    // @extend .fontSize;
+    .fontSize{
+        font-size: 0.407407rem;
+        height: 0.407407rem;
+        line-height: 0.425926rem;
+        text-align: left;
+    }
+    // @extend .flex;
+    .flex{
+        @include flexbox();
+        @include justify-content(space-between);
+    }
+    // 圆点 @extend .circle;
+    .circle{
+        margin-right: 0.185185rem;
+        width: 0.611111rem;
+        height: 0.611111rem;
+        @include border-radius(50%);
+        background: #DFC7A5;
+        float: left;
+    }
+    // 开关
+    .onOff{
+        .mint-switch {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            @include flexbox();
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            position: relative;
+        }
+        .mint-switch * {
+            pointer-events: none;
+        }
+        .mint-switch-label {
+            margin-left: 0.092593rem;
+            display: inline-block;
+        }
+        .mint-switch-label:empty {
+            margin-left: 0;
+        }
+        .mint-switch-core {
+            display: inline-block;
+            position: relative;
+            width: 1.157407rem;
+            height: 0.574074rem;
+            border: 0.009259rem solid #d9d9d9;
+            @include border-radius(0.277778rem);
+            @include box-sizing();
+            background: #DFC7A5;
+        }
+        .mint-switch-core::after, .mint-switch-core::before {
+            content: " ";
+            top: 0;
+            left: 0;
+            position: absolute;
+            -webkit-transition: -webkit-transform .3s;
+            transition: -webkit-transform .3s;
+            transition: transform .3s;
+            transition: transform .3s, -webkit-transform .3s;
+            @include border-radius(0.138889rem);
+        }
+        .mint-switch-core::after {
+            width: 0.537037rem;
+            height: 0.537037rem;
+            @include border-radius(50%);
+            background-color: #fff;
+            box-shadow: 0 0.009259rem 0.027778rem rgba(0, 0, 0, .4);
+        }
+        .mint-switch-core::before {
+            width: 1.157407rem;
+            height: 0.574074rem;
+            @include border-radius(0.277778rem);
+            background-color: #DFC7A5;
+        }
+        .mint-switch-input {
+            display: none;
+        }
+        .mint-switch-input:checked + .mint-switch-core {
+            border-color: #1DB842;
+            background-color: #1DB842;
+        }
+        .mint-switch-input:checked + .mint-switch-core::before {
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+        }
+        .mint-switch-input:checked + .mint-switch-core::after {
+            -webkit-transform: translateX(0.601852rem);
+                    transform: translateX(0.601852rem);
+        }
+    }
+
+    h3{
+        border-bottom: 0.018519rem solid #E4E4E4;
+        font-size: 0.592593rem;
+        line-height: 0.592593rem;
+        font-weight: 300;
+        height: 1.101852rem;
+        text-align: center;
+        padding-bottom: 0.203704rem;
+        padding-top: 0.296296rem;
+        border-bottom: 1px solid #DFC7A5;
+        box-sizing: border-box;
+    }
+    // 公共p
+    p{
+        // @extend .common;
+        font-size: 0.407407rem;
+        height: 0.407407rem;
+        text-align: left;
+    }
+    input{
+        outline: none;
+    }
+    .varRoomSet{
+        border-bottom: 0.018519rem solid #DFC7A5;
+        overflow-y: auto;
+        flex: 1;
+        ul{
+            width: 100%;
+            position: relative;
+        }
+        // 房号
+        li:nth-of-type(1){
+            @extend .flex;
+            label:nth-of-type(1){
+                @extend .fontSize;
+                padding: 0.333333rem 0 0.203704rem;
+                span{
+                    font-size: 0.388889rem;
+                    color: #2BAF25;
+                }
+            }
+            label:nth-of-type(2){
+                float: right;
+                text-align: right;
+                font-size: 0.388889rem;
+                line-height: 0.592593rem;
+                padding-top: 0.203704rem;
+                span{
+                    margin-right: 0.222222rem;
+                    // padding: 25px 0 14px;
+                    width: 0.611111rem;
+                    height: 0.611111rem;
+                    @include border-radius(0.092593rem);
+                    background: #DFC7A5;
+                    float: left;
+                    
+                }
+            }
+        }
+        // 房名
+        li:nth-of-type(2){
+            height: 0.814815rem;
+            padding-bottom: 0.222222rem;
+            @extend .flex;
+            span{
+                @extend .fontSize;
+                display: inline-block;
+                padding: 0.185185rem 0 0.203704rem;
+            }
+            input{
+                @include flex(1);
+                border: 0.018519rem solid #DFC7A7;
+                @include border-radius(0.092593rem);
+                background-color: rgba(0,0,0,0);
+                padding-left: 0.259259rem;
+                font-size: 0.351852rem;
+                line-height: 0.759259rem;
+            }
+
+        }
+        // 新人进房确认
+        li:nth-of-type(3){
+            height: 0.592593rem;
+            @include flexbox();
+            align-items: center;
+            &>span:nth-of-type(1){
+                @extend .fontSize;
+                display: inline-block;
+                padding: 0.074074rem 0.212963rem 0.074074rem 0;
+            }
+        }
+        // 玩法
+        li:nth-of-type(4){
+            height: 1.148148rem;
+            padding: 0.222222rem 0 0.296296rem;
+            @include box-sizing();
+            @include flexbox();
+            &>span:nth-of-type(1){
+                @extend .fontSize;
+                display: inline-block;
+                padding: 0.111111rem 0.092593rem 0.092593rem 0; 
+            }
+            label{
+                float: right;
+                text-align: right;
+                font-size: 0.388889rem;
+                line-height: 0.592593rem;
+                padding-right: 0.555556rem;
+                span{
+                    @extend .circle;
+                }
+            }
+        }
+        // 房间付费模式
+        li:nth-of-type(5){
+            p{
+                @extend .fontSize;
+                span{
+                    float: right;
+                    font-size: 0.351852rem;
+                    line-height: 0.407407rem;
+                    color: #0BBB0E;
+                    text-decoration: underline;
+                }
+            }
+            label{
+                float: left;
+                text-align: right;
+                font-size: 0.388889rem;
+                line-height: 0.592593rem;
+                padding:0.185185rem 0.462963rem 0.222222rem 0;
+                span{
+                    @extend .circle;
+                }
+            }
+        }
+        // 倍率设置
+        li:nth-of-type(6){
+            p{
+                @extend .fontSize;
+                padding-bottom: 0.203704rem;
+                span{
+                    float: right;
+                    font-size: 0.351852rem;
+                    line-height: 0.407407rem;
+                    color: #0BBB0E;
+                    text-decoration: underline;
+                }
+            }
+        }
+        // 倍率dl
+        li:nth-of-type(7){
+            border: 0.018519rem solid #DFC7A5;
+            @include border-radius(0.148148rem);
+            padding: 0.296296rem 0.185185rem 0.148148rem 0.62963rem;
+            dl{
+                @include flexbox();
+                 @include flex-wrap(wrap);
+                @include justify-content(space-between);
+                    text-align: left;
+                dt{
+                    width: 100%;
+                    height: 0.351852rem;
+                    font-size: 0.351852rem;
+                    line-height: 0.351852rem;
+                    padding: 0 0 0.203704rem;
+                }
+                dd{
+                    width: 33%;
+                    height: 0.481481rem;
+                    font-size: 0.351852rem;
+                    line-height: 0.481481rem;
+                }
+                dd:last-child{
+                    @include flex(1);
+                    
+                    float: left;
+                    text-align: left;
+                }
+            }
+        }
+        // 可下注时间：
+        li:nth-of-type(8){
+            padding: 0.203704rem 0 0.240741rem;
+            p{
+                @extend .fontSize;
+            }
+            .divTime{
+                @extend .flex;
+                 @include flex-wrap(wrap);
+            }
+            label{
+                width: 33%;
+                text-align: left;
+                font-size: 0.388889rem;
+                line-height: 0.592593rem;
+                padding:0.185185rem 0.0rem 0.0rem;
+                span{
+                    @extend .circle;
+                }
+            }
+        }
+        // 最低上庄分数
+        li:nth-of-type(9){
+            p{
+                @extend .fontSize;
+            }
+            input{
+                margin-top: 0.092593rem;
+                padding-left: 0.185185rem;
+                font-size: 0.333333rem;
+                line-height: 0.759259rem;
+                height: 0.759259rem;
+                width: 100%;
+                @include box-sizing();
+                border: 0.018519rem solid #DFC7A5;
+                @include border-radius(0.092593rem);
+                color: #0DC108;
+                background-color: rgba(255,255,255,0);
+            }
+        }
+        // 玩家下注范围：
+        li:nth-of-type(10){
+            padding: 0.185185rem 0 0.148148rem;
+            @include flexbox();
+            width: 100%;
+            span{
+                @extend .fontSize;
+                display: inline-block;
+                width: 2.888889rem;
+                padding: 0.203704rem 0.0rem 0.185185rem 0; 
+                white-space: nowrap;
+            }
+            input{
+                width: 1.574074rem;
+                height: 0.814815rem;
+                border: 0.018519rem solid #DFC7A5;
+                @include border-radius(0.092593rem);
+                @include box-sizing();
+                text-align: center;
+                font-size: 0.351852rem;
+                color: #06BC05;
+                margin-right: 0.138889rem;
+                background-color: rgba(255,255,255,0);
+            }
+            input:last-child{
+                margin-left: 0.138889rem;
+                margin-right: 0.0rem;
+            }
+            i{
+                display: inline-block;
+                width: 0.324074rem;
+                height: 0.037037rem;
+                background: #9E9E9E;
+                margin-top: 0.351852rem;
+                // margin-top: -10px;
+                position: relative;
+            }
+        }
+        // 抽庄赢分比例
+        li:nth-of-type(11){
+            height: 1.175926rem;
+            span{
+                @extend .fontSize;
+                display: inline-block;
+                padding: 0.185185rem 0 0.203704rem;
+                float: left;
+            }
+            input{
+                float: left;
+                width: 2.314815rem;
+                height: 0.814815rem;
+                border: 0.018519rem solid #DFC7A5;
+                @include border-radius(0.092593rem);
+                @include box-sizing();
+                text-align: center;
+                font-size: 0.351852rem;
+                color: #06BC05;
+                margin-right: 0.138889rem;
+                background-color: rgba(255,255,255,0);
+            }
+
+            span:last-child{
+                color: #14BE1D;
+                font-size: 0.314815rem;
+                line-height: 0.5rem;
+                &>span{
+                    font-size: 0.388889rem;
+                    line-height: 0.388889rem;
+                    padding: 0;
+                }
+            }
+        }
+        // 遮罩
+        li:last-child{
+            height: 14.814815rem;
+            width: 100%;
+            // background: rgba(0,0,0,0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+        }
+    }
+    .varRoomSet::-webkit-scrollbar {
+        display: none;
+    } 
+    .button12{
+      width: 3.305556rem;
+      height: 1.018519rem;
+      margin: 0.12rem 0 0rem;
+      @include border-radius(1.018519rem);
+      line-height: 0.925926rem;
+      font-size:0.555556rem;
+      border: none;
+      position: relative;
+      left: 50%;
+        transform: translateX(-50%);
+
+      background: $login006 no-repeat;
+      background-size: 3.305556rem 1.018519rem;
+    }
+    .button12.active{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%) scale(0.96,0.96);
+    }
+}
+// 功能未开放
+.clo{
+    //关闭叉叉
+    position: absolute;
+    background: $login008 no-repeat;
+    right: -0.1rem;
+    top: -0.1rem;
+    background-size: 0.907407rem 0.972222rem;
+    height: 0.972222rem;
+    width: 0.907407rem;
+}
+// 功能未开放
+.no{
+    width: 6.324074rem;
+    height: 2.87037rem;
+    background: $idmess01 no-repeat;
+    background-size: 6.324074rem 2.87037rem;
+    
+    @include border-radius(0.240741rem);
+    margin-top: -26%;
+    .close{
+            @extend .clo;
+        }
+    p{
+        color: #FF3C00;
+        font-size: 0.462963rem;
+        text-align: center;
+        line-height: 2.777778rem;
+    }
+}
+// 付费详情
+.card{
+    border: 1px solid #ccc;
+    overflow: hidden;
+    width: 8.333333rem;
+    height: 11rem;
+    overflow-y:auto;
+    background: $oxCrowd_011 no-repeat;
+    background-size: 8.333333rem 11rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    &>i{
+        @include XX_CJFK;
+    }
+    // border: 0.027778rem solid #000;
+    @include border-radius(0.37037rem);
+    border-top-right-radius: 0.38rem;
+    padding: 0.388889rem 0.462963rem 0.462963rem;
+    @include box-sizing();
+    // left:-50px;
+    p{
+        height: 0.548148rem;
+        font-size:0.548148rem;
+        line-height:0.648148rem;
+        width: 7.385185rem;
+        padding: 0 0 0.296296rem;
+        border-bottom: 0.018519rem solid #DFC7A5;
+        text-align:center;
+        .close{
+            position: absolute;
+            background: $homeAll -0.925926rem -2.314815rem no-repeat;
+            background-size: 5.555556rem 5.555556rem;
+            height: 0.527778rem;
+            width: 0.527778rem;
+            right: 0.351852rem;
+            top: 0.435185rem;
+        }
+    }
+    div{
+        position:relative;
+        margin-top: 0.37037rem;
+        width:7.385185rem;
+        height:8.537037rem;
+        background-color: #fcfcfc;
+    }
+}
+
+// 倍率设置
+.set{
+    &>i{
+        @include XX_CJFK;
+    }
+    overflow-y:auto;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    width: 8.333333rem;
+    height: 11rem;
+    overflow-y:auto;
+    background: $oxCrowd_011 no-repeat;
+    background-size: 8.333333rem 11rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    // margin-top:10%;
+    position: absolute;
+    @include border-radius(0.277778rem);
+    border-top-right-radius: 0.38rem;
+    padding: 0.238889rem 0.362963rem 0.277778rem;
+    @include box-sizing();
+
+    .top{
+        font-size: 0.492593rem;
+        line-height: 0.492593rem;
+        color: #3D3D3D;
+        text-align: center;
+        padding-bottom: 0.251852rem;
+        border-bottom: 0.018519rem solid #DFC7A5;
+        .close{
+            position: absolute;
+            background: $homeAll -1.759259rem -2.407407rem no-repeat;
+            background-size: 5.555556rem 5.555556rem;
+            height: 0.527778rem;
+            width: 0.527778rem;
+            right: 0.462963rem;
+            top: 0.316667rem;
+        }
+    }
+
+    //dd_radio
+    .DLUL {
+        // 加减分
+        .addButtion{
+            width-min: 1.851852rem;
+            button{
+                font-size: 0.0rem!important;
+            }
+            input {
+                width: 2.240741rem;
+                height: 0.62963rem;
+                background: #DFC7A5;
+                font-size: 0.296296rem;
+                line-height: 0.62963rem;
+                padding: 0.037037rem 0.037037rem;
+                border-radius: 0.092593rem;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -ms-box-sizing: border-box;
+                -o-box-sizing: border-box;
+                box-sizing: border-box;
+                float: left;
+                margin: 0;
+                border: 0 none;
+                text-align: center;
+            }
+        }
+        p{
+            color: #F44400;
+            font-size: 0.37037rem;
+            line-height: 0.27037rem;
+            padding: 0.296296rem 0 0.281481rem;
+            text-align: center;
+        }
+        dl{
+            border-bottom: 0.018519rem solid #DFC7A5;
+            dt{
+                width: 1.759259rem;
+                font-size: 0.462963rem;
+                line-height: 0.55rem;
+                color: #0AB902;
+                float: left;
+            }
+            // 单选框
+            dd .dd_radio{
+                &>div{
+                    width: 33%;
+                    height: 0.8rem;
+                    label{
+                        width: 100%!important;
+                        margin: 0!important;
+                    }
+                }
+                &>div:nth-of-type(4){
+                    width: 100%;
+                    height: 0.8rem;
+                }
+                // mint-radio-core #26a2ff
+                @include flexbox();
+                @include flex-wrap(wrap);
+                border: 0 none;
+                // radio
+                .mint-radiolist .mint-cell {
+                    padding: 0;
+                }
+                .mint-radiolist-label {
+                    display: block;
+                    // padding: 0 10px;
+                    width: 1.5rem;
+                    @include flexbox();
+                    line-height:0.409259rem;
+                }
+                .mint-radiolist-label:last-child {
+                    width: 3.703704rem;
+                    padding: 0;
+                    margin: 0.324074rem 0.092593rem 0.159259rem;
+                }
+                .mint-radio.is-right {
+                    float: right;
+                }
+                .mint-radio-label {
+                    vertical-align: middle;
+                    margin-left: 0.055556rem;
+                    font-size: 0.351852rem;
+                    line-height: 0.555556rem;
+                }
+                .mint-radio-input {
+                    display: none;
+                }
+                .mint-radio-input:checked + .mint-radio-core {
+                    background-color: #fff;
+                    border-color: #fff;
+                }
+
+                .mint-radio-input:checked + .mint-radio-core::after {
+                    background-color: #1FC616;
+                    -webkit-transform: scale(1);
+                            transform: scale(1);
+                }
+                .mint-radio-input[disabled] + .mint-radio-core {
+                    background-color: #d9d9d9;
+                    border-color: #ccc;
+                }
+                .mint-radio-core {
+                    @include box-sizing();
+                    display: inline-block;
+                    background-color: #fff;
+                    @include border-radius(100%);
+                    border: 0.009259rem solid #ccc;
+                    position: relative;
+                    width: 0.555556rem;
+                    height: 0.555556rem;
+                    vertical-align: middle;
+                    margin-right: 0.185185rem;
+                }
+                .mint-radio-core::after {
+                    content: " ";
+                    border-radius: 100%;
+                    top: 0.064815rem;
+                    left: 0.064815rem;
+                    position: absolute;
+                    width: 0.407407rem;
+                    height: 0.407407rem;
+                    -webkit-transition: -webkit-transform .2s;
+                    transition: -webkit-transform .2s;
+                    transition: transform .2s;
+                    transition: transform .2s, -webkit-transform .2s;
+                    -webkit-transform: scale(0);
+                            transform: scale(0);
+                } 
+            }
+        }
+
+        ul{
+            font-size: 0.462963rem;
+            @include flexbox();
+            @include flex-wrap(wrap);
+            padding: 0.324074rem 0 0.224074rem;
+            li{
+                width: 50%;
+                float:left;
+                color:#0BBF0A;
+                margin-bottom: 0.207778rem;
+                span{
+                    width: 1.414815rem;
+                    display: inline-block;
+                    font-size: 0.462963rem;
+                    float: left;
+                }
+                .add{
+                    margin: 0 -0.555556rem;
+                    float: right;
+                    button {
+                        float: left;
+                        display: inline-block;
+                        width: 0.555556rem;
+                        height: 0.555556rem;
+                        font-size:0.555556rem;
+                        border: none;
+                        float: left;
+
+                        background: $oxCrowd_013 no-repeat;
+                        background-size: 0.555556rem 0.555556rem;
+
+                        position: relative;
+                        -webkit-transform: translate(0.611111rem, 0.037037rem);
+                           -moz-transform: translate(0.611111rem, 0.037037rem);
+                            -ms-transform: translate(0.611111rem, 0.037037rem);
+                             -o-transform: translate(0.611111rem, 0.037037rem);
+                                transform: translate(0.611111rem, 0.037037rem);
+                    }
+                    button:last-child {
+                        background: $oxCrowd_014 no-repeat;
+                        background-size: 0.555556rem 0.555556rem;
+                        -webkit-transform: translate(-0.592593rem, 0.037037rem);
+                           -moz-transform: translate(-0.592593rem, 0.037037rem);
+                            -ms-transform: translate(-0.592593rem, 0.037037rem);
+                             -o-transform: translate(-0.592593rem, 0.037037rem);
+                                transform: translate(-0.592593rem, 0.037037rem);
+                    }
+                    button:active{
+                        position: relative;
+                        @include border-radius(0.277778rem);
+                        left: 0.009259rem ;
+                        top: 0.027778rem;
+                    }
+                } 
+            }
+        }    
+    }
+    hr{
+        background: #DFC7A5;
+    }
+    &>button{
+
+        transform: translate(0%, 20%);
+      width: 3.305556rem ;
+      height: 1.018519rem;
+      @include border-radius(0.5rem);
+      border: none;
+
+        position: absolute;
+        left: 50%;
+        bottom: 0.4rem;
+        transform: translateX(-50%);
+        background: $login006 no-repeat;
+        background-size: 3.305556rem 1.018519rem;
+    }
+    &>button.active{
+        position: absolute;
+        left: 50%;
+        bottom: 0.38rem;
+        transform: translateX(-50%) scale(0.96,0.96);
+    }
+}
+
+
+
