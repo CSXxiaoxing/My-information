@@ -19,22 +19,8 @@ const Register = $ => {
                 else condition = `UPDATE user SET ${key} = ${body[key]} `;
                 condition+=keys;
             }
-            
-            sql[type]( condition, _Data => response.send(_Data) )
-        });
 
-        // get 请求
-        app.get('/class',function(req,res) {
-            var classId = `'${req.query.class}'`
-            var condition = `select * from web where class=${classId}`;
-            // console.log(req.query.class)
-            // var url = req.query.url;
-            // var name = req.query.name;
-            // console.log(url, name);
-            sql.select(condition, function(returnData){
-                console.log(returnData)
-                res.send(returnData);
-            })
+            sql[type]( condition, _Data => response.send(_Data) )
         });
     }
 
