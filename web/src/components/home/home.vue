@@ -2,7 +2,11 @@
 	<div id='home'> 
     <header class="header" :style="'background-color:'+header.hColor" >
         <ColorPicker v-model="header.hColor" alpha class='hColor'/>
-        <h2>My information</h2>
+        <h2 @dblclick='setUser("hName")'>
+            {{user.hName}}
+            <input type="text" v-model="user.hName" v-if='user.hShow' @change='setUser("Update", "hName")' @blur='user.hShow = false' ref="hName">
+        </h2>
+        
 
         <form action="http://www.baidu.com/baidu" target="_blank" class="hForm">
             <Input name="word" icon="search" @on-click='hBaidu' placeholder="百度搜索" style="width: 200px"></Input>
@@ -64,50 +68,86 @@
         </div> -->
     </main>
     <footer>
-        
     </footer>
 	</div>
 </template>
 
 <script type="text/javascript">
     import './home.scss';
-	// import './index.js';
-	import Vue from 'vue';
+    import Vue from 'vue';
 	import http from '../../utils/httpClient.js';
-	import router from '../../router/';
-
+    import router from '../../router/';
+	import userHttp from '../http/UserHttp';
 
 	export default {
 		data: function(){
 			return {
+                user: {
+                    uid: 1,
+                    hName: '',
+                    hShow: false,
+                },
+                dump: {}, // 转储
                 header: {
                     hColor: 'rgba(53, 227, 237, 0.81)',     // 头部颜色
                     // hBaidu: '',     // 百度搜索
                 },
                 main_L: {   // 左侧导航条
                     headline: '分类目录',   // 头部标题
-                    Arial: [ 'JavaScript', 'HTML', 'PHP', 'MySql', 'Nodejs', 'MongoDB', 'vue', 'React', 'Angular4', '前端UI', '学习资料', '快捷键', '个人', '零碎资料' ],  // 二级标题
+                    Arial: [ 'JavaScript', 'HTML', 'PHP', 'MySql', 'Nodejs', 'MongoDB', 'vue.', 'React', 'Angular4', '前端UI', '学习资料', '快捷键', '个人', '零碎资料' ],  // 二级标题
                 },
 			}
 		},
+        created: function(){
+            userHttp.prototype.uid=this.user.uid;
+            userHttp().then( res => {
+                this.user.hName = res.hName;
+            })
+        },
 		mounted: function(){
             this.get('html');
         },
         methods: {
+            setUser: function(type, _data){ // 设置用户参数
+                let $ = this;
+                if(type==="Update"){ // 修改用户资料
+                    var obj = {[_data] : $.user[_data]}
+
+                    userHttp(obj).then( res => {
+                        if(!res) {
+                            $.user.hName = $.dump.hName;
+                        }
+                    })
+
+                    // http.post('/user',{
+                    //     type,
+                    //     update: 'hName', // 修改什么
+                    //     setData: this.user.hName,
+                    //     id: 1,
+                    // }).then( res => {
+                    //     if(!res) {
+                    //         this.user.hName = $.dump.hName;
+                    //     }
+                    // })
+                }
+                else if(type==="hName"){
+                    $.dump['hName'] = $.user.hName;
+                    $.user.hShow = true;
+                    $.$nextTick(() => $.$refs.hName.focus()) // 修改名字
+                }
+            },
             hBaidu(){
                 // 手动执行点击提交表格事件
                 document.querySelector("#home header .hForm").submit();
             },
             get(param){
-                http.get('http://localhost:999/LoginRouter/',{
-                    class: param,
-                }).then( res => {
-                    console.log(res)
-                    // data = JSON.parse(res);
-                    
-
-                })
-            }
+                // http.get('/class',{
+                //     class: param,
+                // }).then( res => {
+                //     console.log(res)
+                //     // data = JSON.parse(res);
+                // })
+            },
 
 
 

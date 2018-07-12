@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-import LoginComponent from '../components/login/login.vue'	// 登录页
+// Component
+import Login from '../components/login/login.vue'	// 登录页
 import HomeComponent from '../components/home/home.vue'		// 主页
 // import oxCrowd from '../components/home/oxCrowd.vue'		// 牛群主页
 // import Room from '../components/room/room.vue'	// 游戏房间
@@ -15,7 +15,7 @@ var router = new VueRouter({
 		{
 			path: '/',
 			name: 'login',
-			component: LoginComponent
+			component: Login
 		},
 		{
 			path: '/home',

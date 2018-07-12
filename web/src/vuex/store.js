@@ -12,6 +12,7 @@ export default new Vuex.Store({
     state: {
         // 用户信息
         user: {
+            test: 'aaa',
             userName: localStorage.oxName,
             userID  : localStorage.oxUid,
             userImg : localStorage.oxImg,
