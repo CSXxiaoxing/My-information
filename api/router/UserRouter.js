@@ -19,7 +19,7 @@ const Register = $ => {
                 else condition = `UPDATE user SET ${key} = ${body[key]} `;
                 condition+=keys;
             }
-
+            console.log(condition)
             sql[type]( condition, _Data => response.send(_Data) )
         });
     }
