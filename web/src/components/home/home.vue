@@ -12,35 +12,44 @@
             <Input name="word" icon="search" @on-click='hBaidu' placeholder="百度搜索" style="width: 200px"></Input>
         </form>
     </header>
-    <main class="main">
-        <div class="m-left">
-            <ul>
-                <li>
-                    {{main_L.headline}}
-                </li>
-                <li v-for='data in main_L.Arial' :key='data'>{{data}}</li>
-            </ul>
-        </div>
 
-        <div class="m-right">
-            <h3>JavaScript</h3>
+    <main>
+    <Row class-name="main">
+        <Col span="6" >
+            <div class="m-left">
+                <ul>
+                    <li>
+                        {{main_L.headline}}
+                    </li>
+                    <li v-for='data in main_L.Arial' :key='data'>{{data}}</li>
+                </ul>
+            </div>
+        </Col>
+        <Col span="18" >
+            <div class="m-right">
+                <h3>JavaScript</h3>
 
-            <div class="weblist">
-                <div class="collect clearfix collectsite">
-                    <div class="head collect-head" data-subclass="collect">收藏网址<i class="glyphicon glyphicon-cog" data-name="collect" data-toggle="modal"></i></div>
+                <div class="weblist">
+                    <div class="collect clearfix collectsite">
+                        <div class="head collect-head" data-subclass="collect">收藏网址<i class="glyphicon glyphicon-cog" data-name="collect" data-toggle="modal"></i></div>
 
-                    <ul class="clearfix">
-                        <li>asd</li>
-                        <li>asd</li>
-                    </ul>
-                </div>
-                <div class="collect clearfix studysite">
-                    <div class="head study-head" data-subclass="study">学习资料<i class="glyphicon glyphicon-cog" data-name="study" data-toggle="modal"></i></div>
-                    <ul class="clearfix">
-                    </ul>
+                        <ul class="clearfix">
+                            <li>asd</li>
+                            <li>asd</li>
+                        </ul>
+                    </div>
+                    <div class="collect clearfix studysite">
+                        <div class="head study-head" data-subclass="study">学习资料<i class="glyphicon glyphicon-cog" data-name="study" data-toggle="modal"></i></div>
+                        <ul class="clearfix">
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Col>
+    </Row>
+        
+
+        
         <!-- <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -114,6 +123,7 @@
                     var obj = {[_data] : $.user[_data]}
 
                     userHttp(obj).then( res => {
+                        console.log(res)
                         if(!res) {
                             $.user.hName = $.dump.hName;
                         }

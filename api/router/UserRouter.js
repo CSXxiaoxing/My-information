@@ -11,12 +11,12 @@ const Register = $ => {
             if(type=="Select") // 查
                 if(Object.keys(body).length == 0) condition = `select * from user `+keys
                 else for (let key in body)
-                if (condition) condition += `and key=${body[key]}`
+                if (condition) condition += `and key = '${body[key]}'`
                 else condition = `select * from user `+keys;
             else{ // 改
                 for (let key in body)
-                if (condition) condition += `, ${key} = ${body[key]}`
-                else condition = `UPDATE user SET ${key} = ${body[key]} `;
+                if (condition) condition += `, ${key} = '${body[key]}'`
+                else condition = `UPDATE user SET ${key} = '${body[key]}' `;
                 condition+=keys;
             }
             console.log(condition)

@@ -13,9 +13,11 @@ const Request = data => new Promise((resolve, reject) => {
     console.log(param)
 
     http.post('/user', param).then( res => {
-        console.log(res)
-        if(res!=null && res.length>1) resolve(res)
-        else resolve(res[0])
+        
+        if (res instanceof Array)
+            if (res!=null && res.length>1) resolve(res)
+            else resolve(res[0])
+        else resolve(res)
     })
 })
 
