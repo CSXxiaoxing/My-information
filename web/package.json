@@ -9,14 +9,12 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "axios": "^0.17.0",
     "css-loader": "^0.28.7",
     "easemob-websdk": "^1.5.0",
     "file-loader": "^1.1.6",
     "image-webpack-loader": "^4.2.0",
     "imagemin-webpack-plugin": "^2.1.1",
-    "iview": "^2.14.0-rc.1",
-    "mint-ui": "^2.2.13",
+    "iview": "^3.0.0",
     "style-loader": "^0.19.1",
     "superagent": "^3.5.2",
     "vue": "^2.5.2",

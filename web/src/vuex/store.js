@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import http from '../utils/httpClient.js';
+// const http = Csx.http;
 import bad from './badDict.js';
 
 Vue.use(Vuex);

@@ -1,31 +1,80 @@
+<style scoped>
+    .layout{
+        border: 1px solid #d7dde4;
+        background: #f5f7f9;
+        position: relative;
+        border-radius: 4px;
+    }
+    .layout-logo{
+        width: 100px;
+        height: 30px;
+        background: #5b6270;
+        border-radius: 3px;
+        float: left;
+        position: relative;
+        top: 15px;
+        left: 20px;
+    }
+    .layout-nav{
+        float: right;
+    }
+    .layout-footer-center{
+        text-align: center;
+    }
+</style>
 <template>
-	<div id='home'> 
-    <header class="header" :style="'background-color:'+header.hColor" >
-        <ColorPicker v-model="header.hColor" alpha class='hColor'/>
-        <h2 @dblclick='setUser("hName")'>
-            {{user.hName}}
-            <input type="text" v-model="user.hName" v-if='user.hShow' @change='setUser("Update", "hName")' @blur='user.hShow = false' ref="hName">
-        </h2>
-        
+	<div id='home' class="layout">
 
-        <form action="http://www.baidu.com/baidu" target="_blank" class="hForm">
-            <Input name="word" icon="search" @on-click='hBaidu' placeholder="百度搜索" style="width: 200px"></Input>
-        </form>
+    <header class="header" :style="'background-color:'+header.hColor" >
+        <!-- <ColorPicker v-model="header.hColor"  alpha class='hColor'/> -->
+        
+        
+        
+        <Menu mode="horizontal" theme="dark" active-name="1">
+            <h2 @dblclick='setUser("hName")'>
+                {{user.hName}}
+                <div v-if='user.hShow'>
+                <input type="text" 
+                v-model="user.hName"
+                @change='setUser("Update", "hName")' @blur='user.hShow = false' ref="hName">
+                </div>
+            </h2>
+            <div class="layout-nav">
+                
+                <MenuItem name="1">
+                    <Icon type="ios-navigate"></Icon>
+                    Item 1
+                </MenuItem>
+                <MenuItem name="2">
+                    <Icon type="ios-keypad"></Icon>
+                    Item 2
+                </MenuItem>
+                <MenuItem name="3">
+                    <Icon type="ios-analytics"></Icon>
+                    Item 3
+                </MenuItem>
+                <MenuItem name="4">
+                    <Icon type="ios-paper"></Icon>
+                    Item 4
+                </MenuItem>
+                <MenuItem name="5">
+                    <form action="http://www.baidu.com/baidu" target="_blank">
+                        <Input name="word" icon="search" @on-click='hBaidu' placeholder="百度搜索" style="width: 200px"></Input>
+                    </form>
+                </MenuItem>
+            </div>
+            
+        </Menu>
+
+        
     </header>
+
 
     <main>
     <Row class-name="main">
-        <Col span="6" >
-            <div class="m-left">
-                <ul>
-                    <li>
-                        {{main_L.headline}}
-                    </li>
-                    <li v-for='data in main_L.Arial' :key='data'>{{data}}</li>
-                </ul>
-            </div>
-        </Col>
-        <Col span="18" >
+        <mainL></mainL>
+
+        <Col span="19" >
             <div class="m-right">
                 <h3>JavaScript</h3>
 
@@ -81,12 +130,14 @@
 	</div>
 </template>
 
+
+
 <script type="text/javascript">
     import './home.scss';
     import Vue from 'vue';
-	import http from '../../utils/httpClient.js';
     import router from '../../router/';
-	import userHttp from '../http/UserHttp';
+    import userHttp from '../http/UserHttp';
+    import mainL from '../../module/homeModule/nav_left.vue'
 
 	export default {
 		data: function(){
@@ -98,47 +149,31 @@
                 },
                 dump: {}, // 转储
                 header: {
-                    hColor: 'rgba(53, 227, 237, 0.81)',     // 头部颜色
+                    hColor: 'rgba(73, 80, 96, 1)',     // 头部颜色
                     // hBaidu: '',     // 百度搜索
                 },
-                main_L: {   // 左侧导航条
-                    headline: '分类目录',   // 头部标题
-                    Arial: [ 'JavaScript', 'HTML', 'PHP', 'MySql', 'Nodejs', 'MongoDB', 'vue.', 'React', 'Angular4', '前端UI', '学习资料', '快捷键', '个人', '零碎资料' ],  // 二级标题
-                },
+                
 			}
-		},
+        },
+        components: {
+            mainL
+        },
         created: function(){
             userHttp.prototype.uid=this.user.uid;
-            userHttp().then( res => {
-                this.user.hName = res.hName;
-            })
+            // userHttp().then( res => {
+            //     this.user.hName = res.hName;
+            // })
         },
 		mounted: function(){
-            this.get('html');
+            
         },
         methods: {
             setUser: function(type, _data){ // 设置用户参数
                 let $ = this;
                 if(type==="Update"){ // 修改用户资料
-                    var obj = {[_data] : $.user[_data]}
 
-                    userHttp(obj).then( res => {
-                        console.log(res)
-                        if(!res) {
-                            $.user.hName = $.dump.hName;
-                        }
-                    })
-
-                    // http.post('/user',{
-                    //     type,
-                    //     update: 'hName', // 修改什么
-                    //     setData: this.user.hName,
-                    //     id: 1,
-                    // }).then( res => {
-                    //     if(!res) {
-                    //         this.user.hName = $.dump.hName;
-                    //     }
-                    // })
+                    userHttp({[_data] : $.user[_data]})
+                    .then( res => {if (!res) $.user.hName = $.dump.hName})
                 }
                 else if(type==="hName"){
                     $.dump['hName'] = $.user.hName;
@@ -149,14 +184,6 @@
             hBaidu(){
                 // 手动执行点击提交表格事件
                 document.querySelector("#home header .hForm").submit();
-            },
-            get(param){
-                // http.get('/class',{
-                //     class: param,
-                // }).then( res => {
-                //     console.log(res)
-                //     // data = JSON.parse(res);
-                // })
             },
 
 

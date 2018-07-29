@@ -3,11 +3,14 @@ var webpack = require('webpack')
 var ImageminPlugin = require('imagemin-webpack-plugin').default
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    build: './src/main.js',
+    base: './lib/base.js'
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: 'dist/',
-    filename: 'build.js'
+    filename: '[name].js'
   },
   module: {
     rules: [

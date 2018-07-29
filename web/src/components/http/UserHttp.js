@@ -1,5 +1,5 @@
 // 关于用户信息的ajax请求：中间件
-import http from '../../utils/httpClient';
+let http = $Csx.http;
 
 const Request = data => new Promise((resolve, reject) => {
     let param = {
@@ -8,12 +8,7 @@ const Request = data => new Promise((resolve, reject) => {
     }
     if (data) for(var tem in data) param[tem] = data[tem];
     
-    
-    
-    console.log(param)
-
     http.post('/user', param).then( res => {
-        
         if (res instanceof Array)
             if (res!=null && res.length>1) resolve(res)
             else resolve(res[0])

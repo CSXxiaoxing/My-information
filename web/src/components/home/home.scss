@@ -1,69 +1,56 @@
 *, *:before, *:after { max-height: 100000px }
+@import "../../utils/Arguments.scss";
 
 #home{
+    background-color: #e7e7e7;
+    max-width: 1200px;
     height: 100%;
-    width: 100%;
+    margin: auto;
 .header{
-    background-color: #FF5E53;
-    height: 1.4rem;
     position: relative;
+    height: 3.75rem;
+    padding: 0 3%;
+    &>ul{height: 100%;}
     h2{
-        line-height: 1.4rem;
-        font-size: 0.5rem;
-        float: left;
+        @include absolute-center(0, 50%, 5%, -50%);
+        background: rgba(200, 200, 200, 0.5);
+        border: 1px solid rgba(200, 200, 0, 0.2);
+        border-radius: 5px;
+        line-height: 20px;
+        font-size: 20px;
+        padding: 0 5px;
         margin: 0;
         color: #1c2438;
         width: auto;
-        position: relative;
         input{
-            height: 0.84rem;
+            height: 22px;
             background: #fff;
             color: #1c2438;
-            position: absolute;
-            border-radius: 0.15rem;
-            padding-left: 0.2rem;
-            left: 0;
-            top: 50%;
-            transform: translate(0,-50%);
+            border-radius: 5px;
+            border: 1px solid rgba(200, 200, 0, 0.2);
+            padding-left: 5px;
+            @include absolute-center(0, 50%, 0, -50%);
         }
     }
-    .hColor{
-        position: relative;
-        float: left;
-        padding: 0 2%;
-        left: 0%;
-        top: 50%;
-        transform: translate(0%,-50%);
-        z-index: 1;
-    }
-    .hForm{
-        float: right;
-        padding: 0 2%;
-        left: 0%;
-        top: 50%;
-        transform: translate(0%,50%);
-    }
-    
+    // .hColor{
+    //     @include absolute-center(0, 50%, 0%, -50%);
+    //     z-index: 2;
+    // }
 }
 .main{
-    padding: 10px 0;
-    background-color: #e7e7e7;
+    padding: 10px;
+    
     height: 100%;
     width: 100%;
     display: flex;
     .m-left{
-        // width: 4.2rem;
-        width: 92%;
-        // margin-right: 0.4rem;
-        margin-right: 3%;
-        margin-left: 5%;
         float: left;
         background: #ccc;
         &>ul{
             li{
-                height: 0.62rem;
-                line-height: 0.62rem;
-                font-size: 0.26rem;
+                height: 35px;
+                line-height: 35px;
+                font-size: 14px;
             }
             li:hover{
                 background: #444;
@@ -71,18 +58,17 @@
             }
             li:first-child{
                 background-color: #58bc58;
-                font-size: 0.28rem;
+                font-size: 18px;
                 font-weight: bold;
                 color: #fff;
             }
 
         }
-
     }
     .m-right{
         flex: 1;
         box-sizing: border-box;
-        margin: 0 2%;
+        margin-left: 10px;
         background-color: #fff;
         border: 1px solid #ccc;
         border-radius: 14px;
@@ -91,9 +77,9 @@
         h3{
             background-color: #58bc58;
             margin: 0;
-            height: 0.62rem;
-            line-height: 0.62rem;
-            font-size: 0.28rem;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
             font-weight: bold;
             text-indent: 20px;
             text-align: center;
