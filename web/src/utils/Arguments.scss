@@ -1,0 +1,9 @@
+// 1. 居中定位、
+@mixin absolute-center($left, $top, $x, $y) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: translate($x, $y);
+}
+
+
