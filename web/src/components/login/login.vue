@@ -1,5 +1,3 @@
-
-
 <template>
 	<div class="login">
 		<sin-in></sin-in>
@@ -25,10 +23,6 @@
 			}
 		},
 		mounted: function(){},
-		methods: {
-			login(){
-				this.$router.push({name: 'home'});
-			}
-		}
+		methods: {}
 	}
 </script>

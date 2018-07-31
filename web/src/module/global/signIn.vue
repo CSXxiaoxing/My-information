@@ -12,13 +12,12 @@
 <template>
     <div>
         <Button @click="modal001 = true">登陆</Button>
-
-        <modal v-model="modal001" 
+        <Modal v-model="modal001" 
         :draggable="true"
-        title="登录" 
+        title="登录"  @on-ok='login'
         class-name="vertical-center-modal">
             <div>暂无必要登录,确认直接进入</div>
-        </modal>
+        </Modal>
     </div>
     
 </template>
@@ -29,10 +28,11 @@
                 modal001: false,
             }
         },
-        mounted: function(){
-            console.log(this)//dragData
-        },
+        beforeMount () {},
+        mounted: function(){},
         methods: {
+            login () { this.$router.push({name: 'home'}); }
+            
         }
     }
 </script>

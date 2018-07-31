@@ -77,7 +77,6 @@
         <Col span="19" >
             <div class="m-right">
                 <h3>JavaScript</h3>
-
                 <div class="weblist">
                     <div class="collect clearfix collectsite">
                         <div class="head collect-head" data-subclass="collect">收藏网址<i class="glyphicon glyphicon-cog" data-name="collect" data-toggle="modal"></i></div>
@@ -160,9 +159,9 @@
         },
         created: function(){
             userHttp.prototype.uid=this.user.uid;
-            // userHttp().then( res => {
-            //     this.user.hName = res.hName;
-            // })
+            userHttp().then( res => {
+                this.user.hName = res.hName;
+            })
         },
 		mounted: function(){
             

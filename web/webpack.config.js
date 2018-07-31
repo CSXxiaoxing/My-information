@@ -1,18 +1,21 @@
 var path = require('path')
-var webpack = require('webpack')
-var ImageminPlugin = require('imagemin-webpack-plugin').default
+const webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// 图片压缩
+// var ImageminPlugin = require('imagemin-webpack-plugin').default
 
 module.exports = {
-  entry: {
-    build: './src/main.js',
-    base: './lib/base.js'
-  },
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: 'dist/',
-    filename: '[name].js'
-  },
-  module: {
+	mode: 'development', // 开发：development 生产：production 
+	entry: {  // 多入口
+    	build: './src/main.js',
+    	base: './lib/base.js'
+  	},
+  	output: {
+    	path: path.resolve(__dirname, './dist'),
+    	publicPath: 'dist/',
+    	filename: '[name].js'
+  	},
+  	module: {
     rules: [
       {
         test: /\.vue$/,
@@ -24,7 +27,7 @@ module.exports = {
             // other preprocessors should work out of the box, no loader config like this necessary.
             'scss': 'vue-style-loader!css-loader!sass-loader',
             'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
-          }
+          } 
           // other vue-loader options go here
         }
       },
@@ -56,38 +59,39 @@ module.exports = {
         loader: 'file-loader'
       }
     ]
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
-  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true,
-    port: 8721,
-    // host:'192.168.31.83'
-  },
-  // host: '192.168.0.104',
-  // plugins: [  
-  //  new webpack.ProvidePlugin({
-  //      jQuery: "jquery",
-  //      $: "jquery"
-  //  })
-  // ],
-  performance: {
-    hints: false
-  },
-  devtool: '#eval-source-map',
-    // plugins: [    // 图片压缩
-    //     new ImageminPlugin({
-    //         disable: process.env.NODE_ENV !== 'production', 
-    //         pngquant: {
-    //             quality: '95-100'
-    //         }
-    //     })
-    // ]
+  	},
+  	resolve: {
+    	alias: {
+      		'vue$': 'vue/dist/vue.esm.js'
+    	}
+  	},
+  	devServer: {
+    	historyApiFallback: true,
+    	noInfo: true,
+    	overlay: true,
+    	port: 8721, // 端口
+    	// host:'192.168.31.83'
+  	},
+  	performance: {
+    	hints: false
+  	},
+  	devtool: '#eval-source-map',
+  	plugins: [
+    	// Vue-loader在15.*之后的版本都需要伴生 VueLoaderPlugin 组件
+    	new VueLoaderPlugin()
+    	// 图片压缩
+    	// new ImageminPlugin({
+    	//     disable: process.env.NODE_ENV !== 'production', 
+    	//     pngquant: {
+    	//         quality: '95-100'
+    	//     }
+    	// })
+    	// 引入jq
+    	// new webpack.ProvidePlugin({
+    	//      jQuery: "jquery",
+   	 	//      $: "jquery"
+    	//  })
+  	]
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -108,6 +112,5 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
-
   ])
 }
