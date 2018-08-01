@@ -56,6 +56,10 @@
                 background: #444;
                 color: #fff;
             }
+            .active{
+                background: #444;
+                color: #fff;
+            }
             li:first-child{
                 background-color: #58bc58;
                 font-size: 18px;
@@ -90,9 +94,19 @@
             padding:10px 20px;
             .collect{
                 .head{
-                    font-weight:bold;height:30px;line-height:30px;border-bottom:1px solid #ccc;text-indent:10px;position:relative;
-                    .glyphicon-cog{
-                        position:absolute;right:10px;top:50%;transform:translateY(-50%);
+                    font-weight:bold;
+                    height:30px;
+                    line-height:30px;
+                    border-bottom:1px solid #ccc;
+                    text-indent: 10px;
+                    position:relative;
+                    font-size: 17px;
+                    i{
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                        cursor: pointer;
+                        transform: translateY(-50%);
                     }
                 }
                 .collect-head{color:#f00;}
