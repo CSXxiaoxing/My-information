@@ -9,17 +9,17 @@ var pool = mysql.createPool({
 
 module.exports = {
     // 增
-    add: function(tsql, collback){
+    Insert: function(tsql, collback){
         pool.query(tsql, function(error, result){
             if (error) throw error;
-            console.log(result)
+            callback(result)
         })
     },
     // 删
     delete: function(tsql, callback){
         pool.query(tsql, function(error, result){
             if (error) throw error;
-            console.log(result)
+            callback(result)
         })
     },
     // 查
