@@ -15,7 +15,7 @@ function getUrl(path) {
 
 const HttpClient = {
     get: (path, query) => new Promise((resolve, reject) => {
-        console.log(getUrl(path))
+
         var req = request
             .get(getUrl(path))
             .query(query)
@@ -30,7 +30,7 @@ const HttpClient = {
             });
     }),
     post: (path, formdata, query) => new Promise((resolve, reject) => {
-        console.log(getUrl(path))
+
         request
             .post(getUrl(path))
             .set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')

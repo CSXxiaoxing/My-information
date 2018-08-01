@@ -1,7 +1,8 @@
 import http from './httpClient';
 
 function csx(){
-    this.name = 999
+    this.name = 999;
+    this.$components={};
 }
 // 请求
 csx.prototype.http = http;
