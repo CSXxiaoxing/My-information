@@ -25,7 +25,7 @@
 <template>
 	<div id='home' class="layout">
 
-    <header class="header" :style="'background-color:'+header.hColor" @click='test'>
+    <header class="header" :style="'background-color:'+header.hColor" @click='cr'>
         <!-- <ColorPicker v-model="header.hColor"  alpha class='hColor'/> -->
         <Menu mode="horizontal" theme="dark" active-name="1">
             <h2 @dblclick='setUser("hName")'>
@@ -147,8 +147,10 @@
                 document.querySelector("#home header .hForm").submit();
             },
 
-            test(){
-                console.log(this.$refs)
+            cr: function(){
+                console.log(this.$store.state.modal[0].id)
+                this.$store.getters.doneTodos
+                console.log(this.$store.state.modal[0].id)
             }
 
 		}
