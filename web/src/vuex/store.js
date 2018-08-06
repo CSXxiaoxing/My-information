@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// const http = Csx.http;
 import bad from './badDict.js';
 
 Vue.use(Vuex);
@@ -18,16 +17,12 @@ export default new Vuex.Store({
         modal: [
             { id: 1, text: '...', done: true },
         ],
-        todos: [
-            { id: 1, text: '...', done: true },
-            { id: 2, text: '...', done: false }
-          ]
     },
     // 属性计算
     // 使用demo ：this.$store.getters.doneTodos
     getters: {
         doneTodos: state => {
-            return state.modal.filter(todo => ++todo.id)
+            return state.modal.filter(todo => todo.id++)
         },
     },
     // 方法，mutations必须同步执行 onCreateGroup

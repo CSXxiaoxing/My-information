@@ -25,13 +25,27 @@
 export default {
     name: 'main_right',
     data: function() {	
-        return {}
+        return {
+            http: ['http-1', 'http-2'],
+            http2: []
+        }
     },
     props: ['dataUrl'],
     methods: {
         a(){
             this.$parent.$parent.$refs.addUrl.modal=true;
             this.$parent.$parent.$refs.addUrl.kid=this.dataUrl[0].kid;
+        },
+        a2(){
+            for(var i=0 ; i<this.http.lenth; i++){
+                if(this.http2.indexOf(http[i]) < 0){
+                    // http.post().then(res=>{
+                        // this.http2.push(http[i])
+                    // })
+                    
+                    break;  
+                }
+            }
         }
     }
 }

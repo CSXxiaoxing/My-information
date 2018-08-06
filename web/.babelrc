@@ -1,12 +1,4 @@
 {
-  "presets": [
-    ["es2015", { "modules": false }],
-    'stage-2'
-  ],
-  "plugins": [["component", [
-    {
-      "libraryName": "mint-ui",
-      "style": true
-    }
-  ]]]
+  "presets": [ ["env", { "modules" : false }] ],
+  "plugins": []
 }

@@ -148,9 +148,7 @@
             },
 
             cr: function(){
-                console.log(this.$store.state.modal[0].id)
-                this.$store.getters.doneTodos
-                console.log(this.$store.state.modal[0].id)
+                
             }
 
 		}

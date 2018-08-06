@@ -5,6 +5,8 @@ const key = true;   // 开发环境为true ; 生产环境为false
 // 默认：false , true => 取消 Vue 所有的日志与警告。
 Vue.config.silent = !key;
 
+
+
 // 2.optionMergeStrategies
 // Vue.config.optionMergeStrategies.testCsx = function (parent, child, vm) {
 //     return child + 1
